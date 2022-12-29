@@ -4,30 +4,6 @@ import { useTable } from "react-table";
 function DeliveryTable(props) {
   const { data } = props;
 
-  // const data = React.useMemo(
-  //   () => [
-  //     {
-  //       startPoint: {
-  //         lat: 51.505,
-  //         lng: -1.02,
-  //       },
-  //       endPoint: {
-  //         lat: 54.505,
-  //         lng: -0.08,
-  //       },
-  //     },
-  //     {
-  //       col1: 'react-table',
-  //       col2: 'rocks',
-  //     },
-  //     {
-  //       col1: 'whatever',
-  //       col2: 'you want',
-  //     },
-  //   ],
-  //   []
-  // )
-
   const columns = React.useMemo(
     () => [
       {

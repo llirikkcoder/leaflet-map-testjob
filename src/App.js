@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./App.css";
 import DeliveryTable from "./components/DeliveryTable";
 import L from "leaflet";
 import "leaflet-routing-machine";
 import Map from "./Map";
+import { useDispatch } from "react-redux";
+import { fetchDeliveryData } from "./actions";
+import ConnectedDeliveryTable from "./components/ConnectedDeliveryTable";
 
 const data = [
   {
@@ -16,24 +19,31 @@ const data = [
       lng: 30.42423701,
     },
   },
-  {
-    startPoint: {
-      lat: 59.82934196,
-      lng: 30.42423701,
-    },
-    endPoint: {
-      lat: 59.82761295,
-      lng: 30.41705607,
-    },
-  },
+  // {
+  //   startPoint: {
+  //     lat: 59.82934196,
+  //     lng: 30.42423701,
+  //   },
+  //   endPoint: {
+  //     lat: 59.82761295,
+  //     lng: 30.41705607,
+  //   },
+  // },
 ];
 
 
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDeliveryData());
+  }, []);
 
   return (
     <div className="App">
-      <DeliveryTable data={data} />
+      <ConnectedDeliveryTable />
+      {/* <DeliveryTable data={data} /> */}
       <Map data={data} />
     </div>
   );
