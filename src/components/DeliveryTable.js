@@ -4,8 +4,7 @@ import { useTable } from "react-table";
 function DeliveryTable(props) {
   const { data } = props;
 
-  const columns = React.useMemo(
-    () => [
+  const columns = [
       {
         Header: "Start Point Latitude",
         accessor: "startPoint.lat",
@@ -22,9 +21,30 @@ function DeliveryTable(props) {
         Header: "End Point Longitude",
         accessor: "endPoint.lng",
       },
-    ],
-    []
-  );
+    ]
+
+
+  // const columns = React.useMemo(
+  //   () => [
+  //     {
+  //       Header: "Start Point Latitude",
+  //       accessor: "startPoint.lat",
+  //     },
+  //     {
+  //       Header: "Start Point Longitude",
+  //       accessor: "startPoint.lng",
+  //     },
+  //     {
+  //       Header: "End Point Latitude",
+  //       accessor: "endPoint.lat",
+  //     },
+  //     {
+  //       Header: "End Point Longitude",
+  //       accessor: "endPoint.lng",
+  //     },
+  //   ],
+  //   []
+  // );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });

@@ -1,16 +1,26 @@
 const initialState = {
-    data: [],
-  };
-  
-  export default function reducer(state = initialState, action) {
-    switch (action.type) {
-      case "FETCH_DELIVERY_DATA_SUCCESS":
-        return {
-          ...state,
-          data: action.payload,
-        };
-      default:
-        return state;
-    }
+  data: [
+    {
+      startPoint: {
+        lat: 59.84660399,
+        lng: 30.29496392,
+      },
+      endPoint: {
+        lat: 59.82934196,
+        lng: 30.42423701,
+      },
+    },
+  ],
+};
+
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "FETCH_DELIVERY_DATA_SUCCESS":
+      return {
+        ...state,
+        data: action.payload,
+      };
+    default:
+      return state;
   }
-  
+}

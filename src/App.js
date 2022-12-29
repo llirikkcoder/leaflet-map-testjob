@@ -42,8 +42,8 @@ function App() {
 
   return (
     <div className="App">
-      <ConnectedDeliveryTable />
-      {/* <DeliveryTable data={data} /> */}
+      {/* <ConnectedDeliveryTable /> */}
+      <DeliveryTable data={data} />
       <Map data={data} />
     </div>
   );
