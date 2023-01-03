@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "antd";
 import "./App.css";
 import L from "leaflet";
 import "leaflet-routing-machine";
@@ -8,10 +9,14 @@ import ConnectedDeliveryTable from "./components/ConnectedDeliveryTable";
 function App() {
 
   return (
-    <div className="App">
+    <Row gutter={[16, 16]}>
+    <Col span={12}>
       <ConnectedDeliveryTable />
+    </Col>
+    <Col span={12}>
       <Map />
-    </div>
+    </Col>
+  </Row>
   );
 }
 
