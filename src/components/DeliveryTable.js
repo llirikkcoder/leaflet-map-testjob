@@ -5,6 +5,10 @@ function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
   const columns = React.useMemo(
     () => [
       {
+        Header: "Order Number",
+        Cell: ({ row }) => row.index + 1,
+      },
+      {
         Header: "Start Point Latitude",
         accessor: "startPoint.lat",
       },
