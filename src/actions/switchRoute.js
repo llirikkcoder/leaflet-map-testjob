@@ -1,1 +1,4 @@
-export const SWITCH_ROUTE = "SWITCH";
+export const switchRoute = (data) => ({
+  type: "SWITCH",
+  payload: data,
+});

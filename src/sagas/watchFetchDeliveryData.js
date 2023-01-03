@@ -1,6 +1,7 @@
-import { takeEvery } from "redux-saga/effects";
+import { takeLatest } from "redux-saga/effects";
+import { FETCH_DELIVERY_DATA } from "../actions";
 import fetchDeliveryDataSaga from "./fetchDeliveryDataSaga";
 
 export default function* watchFetchDeliveryData() {
-  yield takeEvery("FETCH_DELIVERY_DATA", fetchDeliveryDataSaga);
+  yield takeLatest(FETCH_DELIVERY_DATA, fetchDeliveryDataSaga);
 }

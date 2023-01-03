@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import RoutineMachine from "./RoutineMachine";
+import RoutingMachine from "./RoutingMachine";
 import { connect, useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
-// import { fetchDeliveryDataSuccess } from "./actions";
 
 const DeliveryMap = () => {
-
-  // const dispatch = useDispatch();
-  const data = useSelector(store => store.deliveryData.data)
-  console.log("data:", data)
+  const selectedRouteIndex = useSelector(store => store.deliverySwitch.selectedRouteIndex);
+  const data = useSelector(store => store.deliveryData.data);
+  const store = useSelector(store => store);
+  console.log("store:", store);
   
   const [map, setMap] = useState(null);
-  
-
-  // useEffect(() => {
-  //   dispatch(fetchDeliveryDataSuccess())
-  // }, [data]);
 
   return (
     <MapContainer
@@ -31,7 +24,9 @@ const DeliveryMap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {data.map((route, index) => {
-        return <RoutineMachine testArray={route} key={index} />;
+        if (index === selectedRouteIndex) {
+          return <RoutingMachine testArray={route} key={index} />;
+        }
       })}
     </MapContainer>
   );

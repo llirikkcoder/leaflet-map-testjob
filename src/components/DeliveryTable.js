@@ -1,10 +1,9 @@
 import React from "react";
 import { useTable } from "react-table";
 
-function DeliveryTable(props) {
-  const { data } = props;
-
-  const columns = [
+function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
+  const columns = React.useMemo(
+    () => [
       {
         Header: "Start Point Latitude",
         accessor: "startPoint.lat",
@@ -21,7 +20,19 @@ function DeliveryTable(props) {
         Header: "End Point Longitude",
         accessor: "endPoint.lng",
       },
-    ]
+      {
+        Header: "Select",
+        Cell: ({ row }) => (
+          <button
+            onClick={() => setSelectedRouteIndex(row.index)}
+          >
+            Select
+          </button>
+        ),
+      },
+    ],
+    []
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
