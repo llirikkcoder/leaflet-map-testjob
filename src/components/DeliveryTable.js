@@ -2,35 +2,22 @@ import React from "react";
 import { useTable } from "react-table";
 
 function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
+  console.log("selectedRouteIndex:", selectedRouteIndex)
   const columns = React.useMemo(
     () => [
+      { Header: "Номер заявки", Cell: ({ row }) => `№${row.index + 1}` },
+      { Header: "Координаты OT lat", accessor: "startPoint.lat" },
+      { Header: "Координаты OT lng", accessor: "startPoint.lng" },
+      { Header: "Координаты ДО lat", accessor: "endPoint.lat" },
+      { Header: "Координаты ДО lng", accessor: "endPoint.lng" },
       {
-        Header: "Order Number",
-        Cell: ({ row }) => row.index + 1,
-      },
-      {
-        Header: "Start Point Latitude",
-        accessor: "startPoint.lat",
-      },
-      {
-        Header: "Start Point Longitude",
-        accessor: "startPoint.lng",
-      },
-      {
-        Header: "End Point Latitude",
-        accessor: "endPoint.lat",
-      },
-      {
-        Header: "End Point Longitude",
-        accessor: "endPoint.lng",
-      },
-      {
-        Header: "Select",
+        Header: "Выбор",
         Cell: ({ row }) => (
           <button
             onClick={() => setSelectedRouteIndex(row.index)}
           >
-            Select
+            {" "}
+            Выбрать{" "}
           </button>
         ),
       },
@@ -64,7 +51,15 @@ function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr
+              {...row.getRowProps()}
+              className={row.index === selectedRouteIndex ? "selected" : ""}
+              style={
+                row.index === selectedRouteIndex
+                  ? { "background-color": "lightgreen" }
+                  : {}
+              }
+            >
               {row.cells.map((cell) => {
                 return (
                   <td
@@ -72,7 +67,6 @@ function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
                     style={{
                       padding: "10px",
                       border: "solid 1px gray",
-                      background: "papayawhip",
                     }}
                   >
                     {cell.render("Cell")}
