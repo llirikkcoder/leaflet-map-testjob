@@ -2,7 +2,10 @@ import { connect } from "react-redux";
 import DeliveryTable from "./DeliveryTable";
 
 const mapStateToProps = (state) => ({
-  data: state.data,
+  data: state.deliveryData.data,
 });
 
-export default connect(mapStateToProps)(DeliveryTable);
+const ConnectedDeliveryTable = connect(mapStateToProps)(DeliveryTable);
+
+export default ConnectedDeliveryTable;
+

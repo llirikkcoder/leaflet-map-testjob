@@ -1,13 +1,23 @@
 const initialState = {
   data: [
+    // {
+    //   startPoint: {
+    //     lat: 59.84660399,
+    //     lng: 30.29496392,
+    //   },
+    //   endPoint: {
+    //     lat: 59.82934196,
+    //     lng: 30.42423701,
+    //   },
+    // },
     {
       startPoint: {
-        lat: 59.84660399,
-        lng: 30.29496392,
-      },
-      endPoint: {
         lat: 59.82934196,
         lng: 30.42423701,
+      },
+      endPoint: {
+        lat: 59.82761295,
+        lng: 30.41705607,
       },
     },
   ],

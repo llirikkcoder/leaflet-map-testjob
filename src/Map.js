@@ -1,50 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import RoutineMachine from "./RoutineMachine";
+import { connect, useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { fetchDeliveryDataSuccess } from "./actions";
 
-//   const data = [
-//     {
-//       startPoint: {
-//         lat: 37.7749,
-//         lng: -122.4194,
-//       },
-//       endPoint: {
-//         lat: 34.0522,
-//         lng: -118.2437,
-//       },
-//     },
-//     {
-//       startPoint: {
-//         lat: 40.7128,
-//         lng: -74.006,
-//       },
-//       endPoint: {
-//         lat: 41.8781,
-//         lng: -87.6298,
-//       },
-//     },
-//     {
-//       startPoint: {
-//         lat: 47.6062,
-//         lng: -122.3321,
-//       },
-//       endPoint: {
-//         lat: 45.5122,
-//         lng: -122.6587,
-//       },
-//     },
-//   ];
+const DeliveryMap = () => {
 
-const Map = (props) => {
+  // const dispatch = useDispatch();
+  const data = useSelector(store => store.deliveryData.data)
+  console.log("data:", data)
+  
   const [map, setMap] = useState(null);
-  const routingMachineRef = useRef();
-  const pluginRef = useRef();
+  
 
-  useEffect(() => {
-    if (!map) return;
-    const controlContainer = routingMachineRef.current.onAdd(map);
-    pluginRef.current.appendChild(controlContainer);
-  }, [map]);
+  // useEffect(() => {
+  //   dispatch(fetchDeliveryDataSuccess())
+  // }, [data]);
 
   return (
     <MapContainer
@@ -58,11 +30,16 @@ const Map = (props) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {props.data.map((route, index) => {
-        return <RoutineMachine ref={routingMachineRef} testArray={route} key={index} />;
+      {data.map((route, index) => {
+        return <RoutineMachine testArray={route} key={index} />;
       })}
     </MapContainer>
   );
 };
 
-export default Map;
+const mapStateToProps = (state) => ({
+  startPoint: state.deliveryData.startPoint,
+  endPoint: state.deliveryData.endPoint,
+});
+
+export default connect(mapStateToProps)(DeliveryMap);
