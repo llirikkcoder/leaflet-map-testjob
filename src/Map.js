@@ -6,8 +6,6 @@ import { connect, useSelector } from "react-redux";
 const DeliveryMap = () => {
   const selectedRouteIndex = useSelector(store => store.deliverySwitch.selectedRouteIndex);
   const data = useSelector(store => store.deliveryData.data);
-  const store = useSelector(store => store);
-  console.log("store:", store);
   
   const [map, setMap] = useState(null);
 

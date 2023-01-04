@@ -2,7 +2,6 @@ import React from "react";
 import { useTable } from "react-table";
 
 function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
-  console.log("selectedRouteIndex:", selectedRouteIndex)
   const columns = React.useMemo(
     () => [
       { Header: "Номер заявки", Cell: ({ row }) => `№${row.index + 1}` },
