@@ -1,5 +1,3 @@
-// reducers/index.js
-
 import { SET_SELECTED_ROUTE_INDEX } from "../actions";
 
 const initialState = {
