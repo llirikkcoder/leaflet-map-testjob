@@ -1,1 +1,0 @@
-export const getDeliveryData = state => state.deliveryData.data;

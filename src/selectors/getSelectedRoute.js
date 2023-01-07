@@ -1,1 +1,0 @@
-export const getSelectedRoute = store => store.deliverySwitch.selectedRouteIndex;

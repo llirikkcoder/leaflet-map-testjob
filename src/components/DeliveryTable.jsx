@@ -2,9 +2,14 @@ import React from "react";
 import { useTable } from "react-table";
 import ColumnsConfig from "./ColumnsConfig";
 import "./deliveryTable.css";
+import { useSelector } from 'react-redux';
 
-function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
-  const columns = ColumnsConfig(setSelectedRouteIndex)
+function DeliveryTable() {
+  const { data } = useSelector(({ delivery }) => delivery)
+
+  const { selectedRouteIndex } = useSelector((store) => store.switch);
+
+  const columns = ColumnsConfig()
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });

@@ -1,27 +1,18 @@
-import React from "react";
-import { connect } from "react-redux";
-import DeliveryTable from "./DeliveryTable";
-import { setSelectedRouteIndex } from "../actions";
+// import React from "react";
+// import { connect, useSelector } from "react-redux";
+// import DeliveryTable from "./DeliveryTable";
+// import { setSelectedRouteIndex } from "../actions";
 
-const ConnectedDeliveryTable = ({ data, selectedRouteIndex, setSelectedRouteIndex }) => {
-  return (
-    <DeliveryTable
-      data={data}
-      selectedRouteIndex={selectedRouteIndex}
-      setSelectedRouteIndex={setSelectedRouteIndex}
-    />
-  );
-};
+// const ConnectedDeliveryTable = ({ setSelectedRouteIndex }) => {
+//   const { data } = useSelector(({ delivery }) => delivery);
 
-const mapStateToProps = (state) => ({
-  data: state.deliveryData.data,
-  selectedRouteIndex: state.deliverySwitch.selectedRouteIndex,
-});
+//   return (
+//     <DeliveryTable
+//       data={data}
+//       // selectedRouteIndex={selectedRouteIndex}
+//       setSelectedRouteIndex={setSelectedRouteIndex}
+//     />
+//   );
+// };
 
-const mapDispatchToProps = {
-  setSelectedRouteIndex,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConnectedDeliveryTable);
-
-
+// export default ConnectedDeliveryTable;

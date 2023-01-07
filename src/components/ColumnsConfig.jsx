@@ -1,6 +1,12 @@
 import { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
+import { switchSlice } from '../stores/slices';
 
-export default function ColumnsConfig(setSelectedRouteIndex) {
+const { setSelectedRouteIndex } = switchSlice.actions;
+
+export default function ColumnsConfig() {
+  const dispatch = useDispatch();
+
   return useMemo(() => [
     { Header: "Номер заявки", Cell: ({ row }) => `№${row.index + 1}` },
     { Header: "Координаты OT lat", accessor: "startPoint.lat" },
@@ -11,12 +17,12 @@ export default function ColumnsConfig(setSelectedRouteIndex) {
       Header: "Выбор",
       Cell: ({ row }) => (
         <button
-          onClick={() => setSelectedRouteIndex(row.index)}
+          onClick={() => dispatch(setSelectedRouteIndex(row.index))}
         >
           {" "}
           Выбрать{" "}
         </button>
       ),
     },
-  ], []);
+  ], [dispatch]);
 }

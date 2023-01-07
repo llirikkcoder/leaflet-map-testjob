@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import RoutingMachine from "./RoutingMachine";
-import { connect, useSelector } from "react-redux";
-import { getDeliveryData } from './selectors/deliveryData';
-import { getSelectedRoute } from './selectors/getSelectedRoute';
+import { useSelector } from "react-redux";
 
 const DeliveryMap = () => {
-  const selectedRouteIndex = useSelector(getSelectedRoute);
-  const data = useSelector(getDeliveryData);
-  
-  const [map, setMap] = useState(null);
+  const { data } = useSelector(({ delivery }) => delivery)
+
+  const { selectedRouteIndex } = useSelector((store) => store.switch);
+
+  // const selectedRoute = data.find((_, index) => index === selectedRouteIndex)
+
+  const [, setMap] = useState(null);
 
   return (
     <MapContainer
@@ -28,13 +29,11 @@ const DeliveryMap = () => {
           return <RoutingMachine testArray={route} key={index} />;
         }
       })}
+
+      {/* {selectedRoute &&<RoutingMachine testArray={selectedRoute} key={index} /> } */}
     </MapContainer>
   );
 };
 
-const mapStateToProps = (state) => ({
-  startPoint: state.deliveryData.startPoint,
-  endPoint: state.deliveryData.endPoint,
-});
 
-export default connect(mapStateToProps)(DeliveryMap);
+export default DeliveryMap;
