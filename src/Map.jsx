@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import RoutingMachine from "./RoutingMachine";
 import { connect, useSelector } from "react-redux";
+import { getDeliveryData } from './selectors/deliveryData';
+import { getSelectedRoute } from './selectors/getSelectedRoute';
 
 const DeliveryMap = () => {
-  const selectedRouteIndex = useSelector(store => store.deliverySwitch.selectedRouteIndex);
-  const data = useSelector(store => store.deliveryData.data);
+  const selectedRouteIndex = useSelector(getSelectedRoute);
+  const data = useSelector(getDeliveryData);
   
   const [map, setMap] = useState(null);
 
