@@ -1,9 +1,10 @@
-import { useMemo, useDispatch } from 'react';
+import { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 import { selectRoute } from "../actions";
 
 export default function ColumnsConfig(setSelectedRouteIndex) {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return useMemo(() => [
     { Header: "Номер заявки", Cell: ({ row }) => `№${row.index + 1}` },
     { Header: "Координаты OT lat", accessor: "startPoint.lat" },
@@ -14,12 +15,12 @@ export default function ColumnsConfig(setSelectedRouteIndex) {
       Header: "Выбор",
       Cell: ({ row }) => (
         <button
-          onClick={() => setSelectedRouteIndex(row.index)}
-          // onClick={() => {
-          //   const { startPoint, endPoint } = row.original;
-          //   const coords = `${startPoint.lng},${startPoint.lat};${endPoint.lng},${endPoint.lat}`;
-          //   dispatch(selectRoute(coords));
-          // }}
+          onClick={() => {
+            const { startPoint, endPoint } = row.original;
+            const coords = `${startPoint.lng},${startPoint.lat};${endPoint.lng},${endPoint.lat}`;
+            console.log('coords:', coords);
+            dispatch(selectRoute(coords));
+          }}
         >
           {" "}
           Выбрать{" "}

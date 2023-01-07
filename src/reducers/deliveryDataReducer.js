@@ -70,13 +70,13 @@ export default function reducer(state = initialState, action) {
     case FETCH_DELIVERY_DATA_SUCCESS:
       return {
         ...state,
-        data: action.payload,
+        data: action.payload.waypoints,
       };
-    // case FETCH_DELIVERY_DATA_ERROR:
-    //   return {
-    //     ...state,
-    //     error: action.error,
-    //   };
+    case FETCH_DELIVERY_DATA_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
     default:
       return state;
   }
