@@ -1,3 +1,8 @@
+import {
+  FETCH_DELIVERY_DATA_ERROR,
+  FETCH_DELIVERY_DATA_SUCCESS,
+} from "../actions";
+
 const initialState = {
   data: [
     {
@@ -55,11 +60,17 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_DELIVERY_DATA_SUCCESS":
+    case FETCH_DELIVERY_DATA_SUCCESS:
       return {
         ...state,
         data: action.payload,
       };
+    case FETCH_DELIVERY_DATA_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+
     default:
       return state;
   }
