@@ -1,7 +1,8 @@
 import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
-// import { useMap } from "react-leaflet";
+
+const styles = [{ color: "#6FA1EC", weight: 4 }]
 
 const createRoutineMachineLayer = (props) => {
   
@@ -11,7 +12,7 @@ const createRoutineMachineLayer = (props) => {
       L.latLng(props.testArray.endPoint.lat, props.testArray.endPoint.lng)
     ],
     lineOptions: {
-      styles: [{ color: "#6FA1EC", weight: 4 }]
+      styles
     },
     show: false,
     addWaypoints: false,

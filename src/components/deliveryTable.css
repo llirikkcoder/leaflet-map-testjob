@@ -1,0 +1,18 @@
+.selected {
+    background-color: lightgreen;
+}
+
+.table {
+    border: solid 1px blue;
+}
+
+.header-table {
+    background: aliceblue;
+    color: black;
+    font-weight: bold;
+  }
+
+.table-data {
+    padding: 10px;
+    border: solid 1px gray;
+  }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useTable } from "react-table";
 import ColumnsConfig from "./ColumnsConfig";
+import "./deliveryTable.css";
 
 function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
   const columns = ColumnsConfig(setSelectedRouteIndex)
@@ -9,20 +10,15 @@ function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
     useTable({ columns, data });
 
   return (
-    <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+    <table {...getTableProps()} className='table'>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr
             {...headerGroup.getHeaderGroupProps()}
-            style={{
-              borderBottom: "solid 3px red",
-              background: "aliceblue",
-              color: "black",
-              fontWeight: "bold",
-            }}
+            className='header-table'
           >
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th className='table' {...column.getHeaderProps()}>{column.render("Header")}</th>
             ))}
           </tr>
         ))}
@@ -34,20 +30,12 @@ function DeliveryTable({ data, selectedRouteIndex, setSelectedRouteIndex }) {
             <tr
               {...row.getRowProps()}
               className={row.index === selectedRouteIndex ? "selected" : ""}
-              style={
-                row.index === selectedRouteIndex
-                  ? { "background-color": "lightgreen" }
-                  : {}
-              }
             >
               {row.cells.map((cell) => {
                 return (
                   <td
                     {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                    }}
+                    className='table-data'
                   >
                     {cell.render("Cell")}
                   </td>
